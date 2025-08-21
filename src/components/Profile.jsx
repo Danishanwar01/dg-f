@@ -96,7 +96,7 @@ export default Profile;
 
 //   // const handleSubscribe = async () => {
 //   //   try {
-//   //     const res = await axios.post('http://localhost:5000/api/auth/subscribe', { 
+//   //     const res = await axios.post('https://dg-b.onrender.com/api/auth/subscribe', { 
 //   //       userId: currentUser._id, 
 //   //       plan 
 //   //     });

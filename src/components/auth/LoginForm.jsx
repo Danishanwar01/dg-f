@@ -18,7 +18,7 @@ const LoginForm = ({ goTo, onSuccess }) => {
     setIsSubmitting(true);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', form);
+      const res = await axios.post('https://dg-b.onrender.com/api/auth/login', form);
 
       if (res.status === 200) {
         const { token, user } = res.data;

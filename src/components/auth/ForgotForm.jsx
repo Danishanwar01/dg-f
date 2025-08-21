@@ -15,7 +15,7 @@ const ForgotForm = ({ goTo }) => {
     setError('');
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/forgot', {
+      const res = await axios.post('https://dg-b.onrender.com/api/auth/forgot', {
         businessEmail: email.trim(),
       });
       setMessage(res.data?.message || 'Reset link sent to your email');
@@ -72,7 +72,7 @@ export default ForgotForm;
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     try {
-//       await axios.post('http://localhost:5000/api/auth/forgot', { businessEmail: email });
+//       await axios.post('https://dg-b.onrender.com/api/auth/forgot', { businessEmail: email });
 //       setMessage('Reset link sent to your email');
 //     } catch (err) {
 //       setMessage(err.response?.data?.error || 'Request failed');

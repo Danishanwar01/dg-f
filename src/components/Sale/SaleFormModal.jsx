@@ -218,7 +218,7 @@ export default function SaleFormModal({ show, handleClose, onSubmit, editingSale
 //   });
 
 //   useEffect(() => {
-//     axios.get('http://localhost:5000/api/customers')
+//     axios.get('https://dg-b.onrender.com/api/customers')
 //       .then(res => {
 //         const onlyBuyers = res.data.filter(c => c.type === 'Buyer' || c.type === 'Both');
 //         setBuyers(onlyBuyers);

@@ -15,7 +15,7 @@ export default function CustomerPage() {
   const [error, setError] = useState('');
 
   const user = JSON.parse(localStorage.getItem('user') || '{}');
-  const API_URL = `http://localhost:5000/api/customer/${user.id}`;
+  const API_URL = `https://dg-b.onrender.com/api/customer/${user.id}`;
 
   useEffect(() => {
     fetchCustomers();
@@ -317,7 +317,7 @@ export default function CustomerPage() {
 //   }, []);
 
 //   function fetchCustomers() {
-//     fetch(`http://localhost:5000/api/customer/${user.id}`)
+//     fetch(`https://dg-b.onrender.com/api/customer/${user.id}`)
 //       .then(res => res.json())
 //       .then(setCustomers)
 //       .catch(() => setCustomers([]));
@@ -327,7 +327,7 @@ export default function CustomerPage() {
 //     if (editCustomer) {
 //       // Update
 //       fetch(
-//         `http://localhost:5000/api/customer/${user.id}/${editCustomer._id}`,
+//         `https://dg-b.onrender.com/api/customer/${user.id}/${editCustomer._id}`,
 //         {
 //           method: 'PUT',
 //           headers: { 'Content-Type': 'application/json' },
@@ -338,7 +338,7 @@ export default function CustomerPage() {
 //         .then(() => fetchCustomers());
 //     } else {
 //       // Create
-//       fetch(`http://localhost:5000/api/customer/${user.id}`, {
+//       fetch(`https://dg-b.onrender.com/api/customer/${user.id}`, {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify(customerObj)
@@ -351,7 +351,7 @@ export default function CustomerPage() {
 //   function handleDelete(cust) {
 //     if (!window.confirm('Delete this customer?')) return;
 //     fetch(
-//       `http://localhost:5000/api/customer/${user.id}/${cust._id}`,
+//       `https://dg-b.onrender.com/api/customer/${user.id}/${cust._id}`,
 //       { method: 'DELETE' }
 //     )
 //       .then(res => res.json())

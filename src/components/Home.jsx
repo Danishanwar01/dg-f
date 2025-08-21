@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     const fetchSales = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/sale/${userId}`);
+        const res = await axios.get(`https://dg-b.onrender.com/api/sale/${userId}`);
         const data = res.data;
         setSales(data);
 

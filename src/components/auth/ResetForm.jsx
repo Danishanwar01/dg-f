@@ -30,7 +30,7 @@ const ResetForm = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post(`http://localhost:5000/api/auth/reset/${token}`, {
+      const res = await axios.post(`https://dg-b.onrender.com/api/auth/reset/${token}`, {
         password,
       });
       setMessage(res.data?.message || 'Password reset successful');
@@ -92,7 +92,7 @@ export default ResetForm;
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     try {
-//       await axios.post(`http://localhost:5000/api/auth/reset/${token}`, { password });
+//       await axios.post(`https://dg-b.onrender.com/api/auth/reset/${token}`, { password });
 //       setMsg('Password reset successful. You can now log in.');
 //     } catch (err) {
 //       setMsg(err.response?.data?.error || 'Reset failed');

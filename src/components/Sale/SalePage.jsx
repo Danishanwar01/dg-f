@@ -22,8 +22,8 @@ export default function SalePage() {
   const [isLoading, setIsLoading] = useState(true);
 
   const user = JSON.parse(localStorage.getItem('user') || '{}');
-  const API_URL = `http://localhost:5000/api/sale/${user.id}`;
-  const CUSTOMER_URL = `http://localhost:5000/api/customer/${user.id}`;
+  const API_URL = `https://dg-b.onrender.com/api/sale/${user.id}`;
+  const CUSTOMER_URL = `https://dg-b.onrender.com/api/customer/${user.id}`;
 
   useEffect(() => {
     fetchSales();
@@ -308,7 +308,7 @@ export default function SalePage() {
 
 
 //   useEffect(() => {
-//     axios.get('http://localhost:5000/api/sales')
+//     axios.get('https://dg-b.onrender.com/api/sales')
 //       .then(res => {
 //         setSales(res.data);
 //         setFiltered(res.data);
@@ -368,15 +368,15 @@ export default function SalePage() {
 //   const handleAddSale = async (data) => {
 //   try {
 //     if (editingSale) {
-//       await axios.put(`http://localhost:5000/api/sales/${editingSale._id}`, data);
+//       await axios.put(`https://dg-b.onrender.com/api/sales/${editingSale._id}`, data);
 //     } else {
-//       await axios.post('http://localhost:5000/api/sales', data);
+//       await axios.post('https://dg-b.onrender.com/api/sales', data);
 //     }
 
 //     //  Clear editing state before refresh
 //     setEditingSale(null);
 
-//     const res = await axios.get('http://localhost:5000/api/sales');
+//     const res = await axios.get('https://dg-b.onrender.com/api/sales');
 //     setSales(res.data);
 //   } catch (err) {
 //     console.error(' Failed to save sale:', err);
@@ -520,8 +520,8 @@ export default function SalePage() {
 //   const handleDeleteSale = async (id) => {
 //     if (!window.confirm('Are you sure you want to delete this sale?')) return;
 //     try {
-//       await axios.delete(`http://localhost:5000/api/sales/${id}`);
-//       const res = await axios.get('http://localhost:5000/api/sales');
+//       await axios.delete(`https://dg-b.onrender.com/api/sales/${id}`);
+//       const res = await axios.get('https://dg-b.onrender.com/api/sales');
 //       setSales(res.data);
 //     } catch (err) {
 //       console.error(' Failed to delete sale:', err);

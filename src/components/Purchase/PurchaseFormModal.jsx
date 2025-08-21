@@ -250,7 +250,7 @@ export default function PurchaseFormModal({ show, handleClose, onSubmit, editing
 //   });
 
 //   useEffect(() => {
-//     axios.get('http://localhost:5000/api/customers')
+//     axios.get('https://dg-b.onrender.com/api/customers')
 //       .then(res => {
 //         const onlySellers = res.data.filter(c => c.type === 'Seller' || c.type === 'Both');
 //         setSellers(onlySellers);
