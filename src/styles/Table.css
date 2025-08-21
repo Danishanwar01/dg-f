@@ -1,0 +1,57 @@
+/* Hide mobile-only rows by default (desktop view) */
+.mobile-footer-row {
+  display: none;
+}
+
+/* Responsive table styling for mobile */
+@media (max-width: 768px) {
+  .responsive-table thead {
+    display: none;
+  }
+
+  .responsive-table,
+  .responsive-table tbody,
+  .responsive-table tr,
+  .responsive-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .responsive-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+
+  .responsive-table td {
+    position: relative;
+    padding-left: 50%;
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .responsive-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0.75rem;
+    top: 0.5rem;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .responsive-table td:last-child {
+    border-bottom: none;
+  }
+
+  /* Show mobile-only rows */
+  .mobile-footer-row {
+    display: table-row;
+  }
+
+  /* Hide desktop-only content */
+  .desktop-only {
+    display: none !important;
+  }
+}
