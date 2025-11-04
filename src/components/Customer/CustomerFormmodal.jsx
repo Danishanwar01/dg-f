@@ -56,7 +56,7 @@ export default function CustomerFormModal({ show, onClose, onSave, editData }) {
           <Row className="mb-3">
             <Col>
               <Form.Label>Email</Form.Label>
-              <Form.Control name="email" value={formData.email} onChange={handleChange} required type="email"/>
+              <Form.Control name="email" value={formData.email} onChange={handleChange}  type="email"/>
             </Col>
             <Col>
               <Form.Label>Phone</Form.Label>

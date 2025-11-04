@@ -32,7 +32,7 @@ const TransactionTable = ({ data = [], onGenerateBill, onEditSale, onDeleteSale 
                 
               </thead>
              <tbody>
-      {data.length ? data.map((s, idx) => (
+      {data.length ? [...data].reverse().map((s, idx) => (
         <React.Fragment key={idx} className='hr'>
           {s.products.map((p, pIndex) => (
             <tr key={`${idx}-${pIndex}`}>
