@@ -31,85 +31,95 @@ const TransactionTable = ({ data = [], onGenerateBill, onEditSale, onDeleteSale 
                 </tr>
                 
               </thead>
-             <tbody>
-      {data.length ? [...data].reverse().map((s, idx) => (
-        <React.Fragment key={idx} className='hr'>
-          {s.products.map((p, pIndex) => (
-            <tr key={`${idx}-${pIndex}`}>
-              {/* Customer name only once with rowSpan */}
-              {pIndex === 0 && (
-                <td rowSpan={s.products.length} data-label="Customer">
-                  {s.customer?.name || 'Unknown'}
+<tbody>
+  {data.length ? ([...data].reverse().map((s, idx) => (
+      <React.Fragment key={idx}>
+        {s.products.map((p, pIndex) => (
+          <tr key={`${idx}-${pIndex}`}>
+            {/* Customer name (rowSpan for first product only) */}
+            {pIndex === 0 && (
+              <td rowSpan={s.products.length} data-label="Customer">
+                {s.customer?.name || 'Unknown'}
+              </td>
+            )}
+
+            {/* Product details */}
+            <td data-label="Product">{p.name}</td>
+            <td data-label="Qty">{p.quantity} {p.unit}</td>
+            <td data-label="Rate">₹{p.rate}</td>
+            <td data-label="Amount">₹{(p.quantity * p.rate).toFixed(2)}</td>
+            <td data-label="Tax">{p.tax || 0}%</td>
+
+            {/* Desktop-only merged columns (rowSpan for first product) */}
+            {pIndex === 0 && (
+              <>
+                <td className="desktop-only" rowSpan={s.products.length}>
+                  {getStatusBadge(s.paymentStatus)}
                 </td>
-              )}
-    
-              {/* Product and related fields (always shown) */}
-              <td data-label="Product">{p.name}</td>
-              <td data-label="Qty">{p.quantity} {p.unit}</td>
-              <td data-label="Rate">₹{p.rate}</td>
-              <td data-label="Amount">₹{(p.quantity * p.rate).toFixed(2)}</td>
-              <td data-label="Tax">{p.tax || 0}%</td>
-    
-              {/* Desktop-only merged columns */}
-              {pIndex === 0 && (
-                <>
-                  <td className="desktop-only" rowSpan={s.products.length}>
-                    {getStatusBadge(s.paymentStatus)}
-                  </td>
-                  <td className="desktop-only" rowSpan={s.products.length}>
-                    {new Date(s.created).toLocaleDateString()}
-                  </td>
-                  <td className="desktop-only" rowSpan={s.products.length}>
-                    {s.notes || '-'}
-                  </td>
-                  <td className="desktop-only" rowSpan={s.products.length}>
-                    <div className="d-flex flex-column gap-1">
-                      <button className="btn btn-sm btn-outline-primary" onClick={() => onGenerateBill(s)}>Bill</button>
-                      <button className="btn btn-sm btn-outline-secondary" onClick={() => onEditSale(s)}>Edit</button>
-                      <button className="btn btn-sm btn-outline-danger" onClick={() => onDeleteSale(s._id)}>Delete</button>
-                    </div>
-                  </td>
-                </>
-              )}       
-            </tr>
-            
-          ))}
-    
-          {/* Mobile-only footer rows */}
-          <tr className="mobile-footer-row">
-            <td colSpan="6" data-label="Status">
-              <strong></strong> {getStatusBadge(s.paymentStatus)}
-            </td>
+                <td className="desktop-only" rowSpan={s.products.length}>
+                  {new Date(s.created).toLocaleDateString()}
+                </td>
+                <td className="desktop-only" rowSpan={s.products.length}>
+                  {s.notes || '-'}
+                </td>
+                <td className="desktop-only" rowSpan={s.products.length}>
+                  <div className="d-flex flex-column gap-1">
+                    <button
+                      className="btn btn-sm btn-outline-primary"
+                      onClick={() => onGenerateBill(s)}
+                    >
+                      Bill
+                    </button>
+                    <button
+                      className="btn btn-sm btn-outline-secondary"
+                      onClick={() => onEditSale(s)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="btn btn-sm btn-outline-danger"
+                      onClick={() => onDeleteSale(s._id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </>
+            )}
           </tr>
-          <tr className="mobile-footer-row">
-            <td colSpan="6" data-label="Date">
-              <strong></strong> {new Date(s.created).toLocaleDateString()}
-            </td>
-          </tr>
-          <tr className="mobile-footer-row">
-            <td colSpan="6" data-label="Note">
-              <strong></strong> {s.notes || '-'}
-            </td>
-          </tr>
-          <tr className="mobile-footer-row">
-            <td colSpan="6" data-label="Actions">
-              <div className="d-flex flex-column gap-1">
+        ))}
+
+        {/* Mobile-only rows */}
+        <tr className="mobile-footer-row">
+          <td colSpan="10">
+            <div className="mobile-info">
+              <div><strong>Status:</strong> {getStatusBadge(s.paymentStatus)}</div>
+              <div><strong>Date:</strong> {new Date(s.created).toLocaleDateString()}</div>
+              <div><strong>Note:</strong> {s.notes || '-'}</div>
+              <div className="d-flex flex-column gap-1 mt-2">
                 <button className="btn btn-sm btn-outline-primary" onClick={() => onGenerateBill(s)}>Bill</button>
                 <button className="btn btn-sm btn-outline-secondary" onClick={() => onEditSale(s)}>Edit</button>
                 <button className="btn btn-sm btn-outline-danger" onClick={() => onDeleteSale(s._id)}>Delete</button>
               </div>
-            </td>
-    
-          </tr>
-            <hr style={{ margin: '1rem 0', borderColor: '#ddd' }} />
-         
-        </React.Fragment>
-      )) : (
-        <tr>
-          <td colSpan="10" className="text-center">No Sale found.</td>
+            </div>
+          </td>
         </tr>
-      )}
-    </tbody>
+
+        {/* Row separator (safe inside tbody) */}
+        <tr>
+          <td colSpan="10" style={{ padding: 0 }}>
+            <hr style={{ margin: '1rem 0', borderColor: '#ddd' }} />
+          </td>
+        </tr>
+      </React.Fragment>
+    ))
+  ) : (
+    <tr>
+      <td colSpan="10" className="text-center">No Sale found.</td>
+    </tr>
+  )}
+</tbody>
+
     
             </table>
           </div>

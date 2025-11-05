@@ -7,7 +7,7 @@ const StatCards = ({ type, statsData = {} }) => {
         { title: 'Outstanding Payments', value: `Rs. ${statsData.outstanding || 0}`, },
         //  change: '-5.4%', color: 'danger'
         { title: 'Products Sold', value: `${statsData.totalUnits || 0} Units`,  },
-        { title: 'Tax Collected', value: `Rs. ${statsData.totalTax || 0}`, },
+        { title: 'Tax Given', value: `Rs. ${statsData.totalTax || 0}`, },
       ]
     : [
         { title: 'Total Purchase Amount', value: `Rs. ${statsData.totalPurchase || 0}`,  },
