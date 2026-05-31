@@ -22,8 +22,8 @@ export default function SalePage() {
   const [isLoading, setIsLoading] = useState(true);
 
   const user = JSON.parse(localStorage.getItem('user') || '{}');
-  const API_URL = `https://dg-b.onrender.com/api/sale/${user.id}`;
-  const CUSTOMER_URL = `https://dg-b.onrender.com/api/customer/${user.id}`;
+  const API_URL = `https://dg-b-1.onrender.com/api/sale/${user.id}`;
+  const CUSTOMER_URL = `https://dg-b-1.onrender.com/api/customer/${user.id}`;
 
   useEffect(() => {
     fetchSales();

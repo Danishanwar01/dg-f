@@ -22,8 +22,8 @@ export default function PurchasePage() {
   const [isLoading, setIsLoading] = useState(true);
 
   const user = JSON.parse(localStorage.getItem('user') || '{}');
-  const API_URL = `https://dg-b.onrender.com/api/purchase/${user.id}`;
-  const CUSTOMER_URL = `https://dg-b.onrender.com/api/customer/${user.id}`;
+  const API_URL = `https://dg-b-1.onrender.com/api/purchase/${user.id}`;
+  const CUSTOMER_URL = `https://dg-b-1.onrender.com/api/customer/${user.id}`;
 
   useEffect(() => {
     fetchPurchases();
@@ -311,7 +311,7 @@ export default function PurchasePage() {
 
 
 //   useEffect(() => {
-//     axios.get('https://dg-b.onrender.com/api/purchases')
+//     axios.get('https://dg-b-1.onrender.com/api/purchases')
 //       .then(res => {
 //         setPurchases(res.data);
 //         setFiltered(res.data);
@@ -371,15 +371,15 @@ export default function PurchasePage() {
 //   const handleAddPurchase = async (data) => {
 //   try {
 //     if (editingPurchase) {
-//       await axios.put(`https://dg-b.onrender.com/api/purchases/${editingPurchase._id}`, data);
+//       await axios.put(`https://dg-b-1.onrender.com/api/purchases/${editingPurchase._id}`, data);
 //     } else {
-//       await axios.post('https://dg-b.onrender.com/api/purchases', data);
+//       await axios.post('https://dg-b-1.onrender.com/api/purchases', data);
 //     }
 
 //     //  Clear editing state before refresh
 //     setEditingPurchase(null);
 
-//     const res = await axios.get('https://dg-b.onrender.com/api/purchases');
+//     const res = await axios.get('https://dg-b-1.onrender.com/api/purchases');
 //     setPurchases(res.data);
 //   } catch (err) {
 //     console.error(' Failed to save purchase:', err);
@@ -523,8 +523,8 @@ export default function PurchasePage() {
 //   const handleDeletePurchase = async (id) => {
 //     if (!window.confirm('Are you sure you want to delete this purchase?')) return;
 //     try {
-//       await axios.delete(`https://dg-b.onrender.com/api/purchases/${id}`);
-//       const res = await axios.get('https://dg-b.onrender.com/api/purchases');
+//       await axios.delete(`https://dg-b-1.onrender.com/api/purchases/${id}`);
+//       const res = await axios.get('https://dg-b-1.onrender.com/api/purchases');
 //       setPurchases(res.data);
 //     } catch (err) {
 //       console.error(' Failed to delete purchase:', err);

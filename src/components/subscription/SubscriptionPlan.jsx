@@ -7,7 +7,7 @@ const SubscriptionPage = ({ userId }) => {
 
   const handleSubscribe = async () => {
     try {
-      const res = await axios.post('https://dg-b.onrender.com/api/auth/subscribe', { userId, plan });
+      const res = await axios.post('https://dg-b-1.onrender.com/api/auth/subscribe', { userId, plan });
       setMessage(`Payment of ₹${res.data.amount} successful!`);
     } catch (err) {
       setMessage(err.response?.data?.error || 'Payment failed');

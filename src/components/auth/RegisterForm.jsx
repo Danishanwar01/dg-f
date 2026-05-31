@@ -31,7 +31,7 @@ const RegisterForm = ({ goTo, onSuccess }) => {
   }
 
   try {
-    const res = await axios.post('https://dg-b.onrender.com/api/auth/register', form);
+    const res = await axios.post('https://dg-b-1.onrender.com/api/auth/register', form);
     
     if (res.status === 201) {
       const { token, user } = res.data;

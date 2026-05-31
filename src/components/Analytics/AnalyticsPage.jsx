@@ -16,8 +16,8 @@ const AnalyticsPage = () => {
   useEffect(() => {
     async function fetchData() {
 const [sRes, pRes] = await Promise.all([
-  axios.get(`https://dg-b.onrender.com/api/sale/${user.id}`),
-  axios.get(`https://dg-b.onrender.com/api/purchase/${user.id}`)
+  axios.get(`https://dg-b-1.onrender.com/api/sale/${user.id}`),
+  axios.get(`https://dg-b-1.onrender.com/api/purchase/${user.id}`)
 ]);
 
       const s = sRes.data, p = pRes.data;
