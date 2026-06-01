@@ -194,6 +194,7 @@ export default function PurchasePage() {
 
   return (
     <div className="container-fluid px-0">
+      {error && <div className="alert alert-danger">{error}</div>}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center my-3 gap-3">
   <h4>Purchases</h4>
   

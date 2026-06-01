@@ -8,7 +8,6 @@ import Purchase from './components/Purchase/Purchase';
 import SalePage from './components/Sale/SalePage';
 import CustomerPage from './components/Customer/CustomerPage';
 import AnalyticsPage from './components/Analytics/AnalyticsPage';
-import SettingsPage from './components/Settings/Settingspage';
 import UserAuthPage from './components/auth/UserAuthPage';
 import Profile from './components/Profile';
 import './App.css';

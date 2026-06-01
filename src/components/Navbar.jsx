@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Home,
   ShoppingCart,
@@ -9,13 +9,12 @@ import {
 } from "lucide-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../images/logo.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const location = useLocation();
-  const navigate = useNavigate();
-  const { currentUser, logout } = useAuth();
+  const { currentUser } = useAuth();
 
   const navItems = [
     { to: "/", label: "Dashboard", icon: Home },
@@ -24,11 +23,6 @@ const Navbar = () => {
     { to: "/customer", label: "Customers", icon: Users },
     { to: "/analytics", label: "Analytics", icon: BarChart },
   ];
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
 
   const NavLinks = ({ onClick }) => (
     <ul className="nav nav-pills flex-column mb-auto">

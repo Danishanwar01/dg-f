@@ -7,22 +7,18 @@ import ProfitTrendLine from './Charts/ProfitTrendLine';
 import InsightsList from './InsightsList';
 
 const AnalyticsPage = () => {
-  const [sales, setSales] = useState([]);
-  const [purchases, setPurchases] = useState([]);
   const [stats, setStats] = useState({});
   const [chartsData, setChartsData] = useState({});
   const [insights, setInsights] = useState([]);
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  const userId = JSON.parse(localStorage.getItem('user') || '{}').id;
   useEffect(() => {
     async function fetchData() {
 const [sRes, pRes] = await Promise.all([
-  axios.get(`https://dg-b-1.onrender.com/api/sale/${user.id}`),
-  axios.get(`https://dg-b-1.onrender.com/api/purchase/${user.id}`)
+  axios.get(`https://dg-b-1.onrender.com/api/sale/${userId}`),
+  axios.get(`https://dg-b-1.onrender.com/api/purchase/${userId}`)
 ]);
 
       const s = sRes.data, p = pRes.data;
-      setSales(s);
-      setPurchases(p);
 
       // 1. Totals & Outstanding
       const totalSales = s.reduce((sum, sale) => {
@@ -98,7 +94,7 @@ const [sRes, pRes] = await Promise.all([
       ]);
     }
     fetchData();
-  }, []);
+  }, [userId]);
 
   return (
     <div className="container-fluid px-0">

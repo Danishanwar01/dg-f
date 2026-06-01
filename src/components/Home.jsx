@@ -9,7 +9,6 @@ import TopCustomers from '../components/Dashboard/TopCustomers';
 import PaymentStatusPie from '../components/Dashboard/PaymentStatusPie';
 
 const Home = () => {
-  const [sales, setSales] = useState([]);
   const [summary, setSummary] = useState({});
   const [monthlyData, setMonthlyData] = useState([]);
   const [topProducts, setTopProducts] = useState([]);
@@ -24,7 +23,6 @@ const Home = () => {
       try {
         const res = await axios.get(`https://dg-b-1.onrender.com/api/sale/${userId}`);
         const data = res.data;
-        setSales(data);
 
         // 1. Summary: total orders, revenue, volume
         let totalRevenue = 0, totalVolume = 0;
@@ -118,7 +116,7 @@ const Home = () => {
     };
 
     fetchSales();
-  }, []);
+  }, [userId]);
 
   return (
    <div className="container-fluid px-0">
